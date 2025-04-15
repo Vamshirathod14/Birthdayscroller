@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     const fetchBirthdays = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/birthdays');
+        const response = await axios.get('https://birthdayscroller-backend.onrender.com/api/birthdays');
         setBirthdays(response.data);
         setLoading(false);
       } catch (error) {
