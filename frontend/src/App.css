@@ -1,0 +1,374 @@
+:root {
+  --primary: #6a11cb;
+  --secondary: #2575fc;
+  --accent: #ff4d7d;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --success: #28a745;
+  --warning: #ffc107;
+  --info: #17a2b8;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+  background-color: #f5f7fa;
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  background: var(--gradient);
+  padding: 2rem;
+  border-radius: 12px;
+  color: white;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.app-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+  transform: rotate(30deg);
+  z-index: 0;
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.developer-credit {
+  font-size: 1rem;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+}
+
+.date-display {
+  background: rgba(255,255,255,0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: 500;
+  backdrop-filter: blur(5px);
+  position: relative;
+  z-index: 1;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(106, 17, 203, 0.2);
+  border-radius: 50%;
+  border-top-color: var(--primary);
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.birthday-highlight {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.birthday-highlight h2 {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  position: relative;
+  display: inline-block;
+}
+
+.birthday-highlight h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.all-birthdays-section {
+  margin-top: 3rem;
+}
+
+.all-birthdays-section h2 {
+  color: var(--secondary);
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.birthday-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.birthday-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.birthday-card.today {
+  border: 3px solid var(--accent);
+  box-shadow: 0 6px 12px rgba(255, 77, 125, 0.2);
+}
+
+.card-image-container {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.birthday-card:hover .card-image {
+  transform: scale(1.1);
+}
+
+.today-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--accent);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.card-details {
+  padding: 1.5rem;
+  flex-grow: 1;
+}
+
+.card-details h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--dark);
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.detail-row span:first-child {
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.detail-row span:last-child {
+  color: var(--dark);
+}
+
+.card-actions {
+  padding: 0 1.5rem 1.5rem;
+}
+
+.wish-button {
+  width: 100%;
+  padding: 0.6rem;
+  background: var(--gradient);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.wish-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(106, 17, 203, 0.3);
+}
+
+.no-birthdays {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  margin: 2rem 0;
+}
+
+.no-birthdays h2 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.no-birthdays p {
+  color: var(--dark);
+  opacity: 0.7;
+}
+
+.app-footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  color: var(--dark);
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app {
+    padding: 1rem;
+  }
+  
+  .app-header h1 {
+    font-size: 2rem;
+  }
+  
+  .highlight-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .birthday-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header {
+    padding: 1.5rem 1rem;
+  }
+  
+  .app-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .birthday-card {
+    margin-bottom: 1rem;
+  }
+}
+/* ... (keep all previous CSS variables and base styles) ... */
+
+.main-content {
+  min-height: 60vh;
+  padding: 2rem 0;
+}
+
+.card-image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* 1:1 Aspect Ratio */
+  overflow: hidden;
+}
+
+.card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* ... (keep all other existing styles) ... */
+
+@media (max-width: 768px) {
+  .card-image-container {
+    padding-top: 120%; /* Slightly taller aspect ratio for mobile */
+  }
+}
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.birthday-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  will-change: transform; /* Optimize animations */
+}
+
+/* Ensure images fill the card properly */
+.card-image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* 1:1 Aspect Ratio */
+  overflow: hidden;
+}
+
+.card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
